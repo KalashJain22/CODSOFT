@@ -17,7 +17,6 @@ void load_tasks_from_file() {
     ifstream file(FILE_NAME);
 
     if(!file.is_open()) {
-        cout<< "\nFile can not be open." << endl;
         return;
     }
 
@@ -95,7 +94,7 @@ int main() {
     
     cout<< "\n\t*** Welcome to To Do List Manager ***" <<endl;
     cout<< "\nEnter your Username: ";
-    cin>> username;
+    getline(cin, username);
 
     do {
         cout<< "\n1. Add new Task" << endl;
@@ -111,10 +110,12 @@ int main() {
             break;
         } 
 
+        cin.ignore(); //Ignore the new line character
+
         switch (choice)
         {
         case 1: cout<< "Enter the task that you want to add: ";
-                cin>> task;
+                getline(cin, task);
                 add_task(username, task);
             break;
         case 2: view_task(username);
