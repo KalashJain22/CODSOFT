@@ -12,7 +12,7 @@ const string FILE_NAME = "tasks.txt"; //File name
 //For maintain the users of to-do-list
 unordered_map<string, vector<pair<string, bool>>> users;
 
-//For read and use of content from the file
+//For read and use of tasks from the file
 void load_tasks_from_file() {
     ifstream file(FILE_NAME);
 
@@ -33,7 +33,7 @@ void load_tasks_from_file() {
     file.close();
 }
 
-//For save every tasks input in the file
+//For save input of tasks in the file
 void save_tasks_to_file() {
     ofstream file(FILE_NAME);
 
@@ -73,6 +73,7 @@ void mark_completed(string username, size_t task_num) {
         cout<< "\nGiven task number is already completed." << endl;
     } else {
         users[username][task_num-1].second = true;
+        cout<< "\nTask successfully mark as completed." << endl;
     }
 }
 
@@ -81,6 +82,7 @@ void delete_task(string username,  size_t task_num) {
         cout<< "\nInvalid, task number." << endl;
     } else {
         users[username].erase(users[username].begin() + task_num - 1);
+        cout<< "\nTask successfully deleted." << endl;
     }
 }
 
